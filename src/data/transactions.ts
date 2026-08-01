@@ -1,0 +1,42 @@
+export const transactionData = [
+  {
+    id: 1,
+    title: "Salary",
+    category: "Income",
+    amount: "₹45,000",
+    date: "Today",
+    type: "income",
+  },
+  {
+    id: 2,
+    title: "Netflix",
+    category: "Entertainment",
+    amount: "₹499",
+    date: "Yesterday",
+    type: "expense",
+  },
+  {
+    id: 3,
+    title: "Amazon",
+    category: "Shopping",
+    amount: "₹2,499",
+    date: "2 days ago",
+    type: "expense",
+  },
+  {
+    id: 4,
+    title: "Swiggy",
+    category: "Food",
+    amount: "₹650",
+    date: "3 days ago",
+    type: "expense",
+  },
+  {
+    id: 5,
+    title: "Electricity Bill",
+    category: "Utilities",
+    amount: "₹1,800",
+    date: "5 days ago",
+    type: "expense",
+  },
+];
