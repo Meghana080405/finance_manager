@@ -1,14 +1,20 @@
-import { useState } from "react";
 import {
   LayoutDashboard,
   Receipt,
   Wallet,
   PieChart,
   Settings,
-  Menu,
   X,
 } from "lucide-react";
+
 import { NavLink } from "react-router-dom";
+
+type SidebarProps = {
+  open: boolean;
+  setOpen: React.Dispatch<
+    React.SetStateAction<boolean>
+  >;
+};
 
 const menuItems = [
   {
@@ -38,23 +44,12 @@ const menuItems = [
   },
 ];
 
-export default function Sidebar() {
-  const [open, setOpen] = useState(false);
-
+export default function Sidebar({
+  open,
+  setOpen,
+}: SidebarProps) {
   return (
     <>
-      {/* Mobile Header */}
-      <div className="flex items-center justify-between border-b bg-white px-4 py-4 shadow-sm lg:hidden">
-        <h1 className="text-xl font-bold text-blue-600">
-          FinFlow
-        </h1>
-
-        <button onClick={() => setOpen(true)}>
-          <Menu size={28} />
-        </button>
-      </div>
-
-      {/* Overlay */}
       {open && (
         <div
           onClick={() => setOpen(false)}
@@ -62,32 +57,30 @@ export default function Sidebar() {
         />
       )}
 
-      {/* Sidebar */}
       <aside
         className={`fixed left-0 top-0 z-50 h-screen w-64 border-r border-slate-200 bg-white transition-transform duration-300 lg:static lg:translate-x-0 ${
-          open ? "translate-x-0" : "-translate-x-full"
+          open
+            ? "translate-x-0"
+            : "-translate-x-full"
         }`}
       >
-        {/* Mobile Close Button */}
-        <div className="flex items-center justify-between border-b p-6 lg:hidden">
-          <h1 className="text-2xl font-bold text-blue-600">
-            FinFlow
-          </h1>
+        <div className="flex items-center justify-between border-b p-6">
+          <div>
+            <h1 className="text-2xl font-bold text-blue-600">
+              FinFlow
+            </h1>
 
-          <button onClick={() => setOpen(false)}>
+            <p className="mt-1 text-sm text-slate-500">
+              Personal Finance
+            </p>
+          </div>
+
+          <button
+            onClick={() => setOpen(false)}
+            className="lg:hidden"
+          >
             <X size={24} />
           </button>
-        </div>
-
-        {/* Desktop Header */}
-        <div className="hidden border-b p-6 lg:block">
-          <h1 className="text-2xl font-bold text-blue-600">
-            FinFlow
-          </h1>
-
-          <p className="mt-1 text-sm text-slate-500">
-            Personal Finance
-          </p>
         </div>
 
         <nav className="mt-6 px-4">
