@@ -32,10 +32,9 @@ export default function Dashboard() {
 
   return (
     <div className="space-y-8">
-
       {/* Welcome */}
       <div>
-        <h1 className="text-3xl font-bold text-slate-800">
+        <h1 className="text-2xl font-bold text-slate-800 sm:text-3xl">
           Welcome back 👋
         </h1>
 
@@ -45,7 +44,7 @@ export default function Dashboard() {
       </div>
 
       {/* Statistics */}
-      <div className="grid grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <StatCard
           title="Balance"
           value={`₹${totalBalance.toLocaleString()}`}
@@ -73,9 +72,8 @@ export default function Dashboard() {
       </div>
 
       {/* Charts */}
-      <div className="grid grid-cols-3 gap-6">
-
-        <div className="col-span-2">
+      <div className="grid grid-cols-1 gap-6 xl:grid-cols-3">
+        <div className="xl:col-span-2">
           <Card title="Cash Flow">
             <CashFlowChart />
           </Card>
@@ -83,7 +81,6 @@ export default function Dashboard() {
 
         <Card title="Budget Progress">
           <div className="space-y-6">
-
             {budgets.length === 0 ? (
               <p className="py-6 text-center text-slate-500">
                 No budgets created yet.
@@ -105,9 +102,9 @@ export default function Dashboard() {
 
                 return (
                   <div key={budget.id}>
-
                     <div className="flex justify-between text-sm">
                       <span>{budget.category}</span>
+
                       <span>{percent}%</span>
                     </div>
 
@@ -130,25 +127,19 @@ export default function Dashboard() {
                       ₹{spent.toLocaleString()} / ₹
                       {budget.limit.toLocaleString()}
                     </p>
-
                   </div>
                 );
               })
             )}
-
           </div>
         </Card>
-
       </div>
 
       {/* Recent Transactions & Top Categories */}
-      <div className="grid grid-cols-3 gap-6">
-
-        <div className="col-span-2">
+      <div className="grid grid-cols-1 gap-6 xl:grid-cols-3">
+        <div className="xl:col-span-2">
           <Card title="Recent Transactions">
-
             <div className="space-y-2">
-
               {transactions.length === 0 ? (
                 <p className="py-6 text-center text-slate-500">
                   No transactions yet.
@@ -163,22 +154,18 @@ export default function Dashboard() {
                       key={item.id}
                       title={item.title}
                       category={item.category}
-                      amount={`₹${item.amount.toLocaleString()}`}
+                      amount={`₹ ${item.amount.toLocaleString()}`}
                       date={item.date}
                       income={item.type === "income"}
                     />
                   ))
               )}
-
             </div>
-
           </Card>
         </div>
 
         <Card title="Top Categories">
-
           <div className="space-y-5">
-
             {topCategories.length === 0 ? (
               <p className="text-slate-500">
                 No expense data.
@@ -197,13 +184,9 @@ export default function Dashboard() {
                 </div>
               ))
             )}
-
           </div>
-
         </Card>
-
       </div>
-
     </div>
   );
 }

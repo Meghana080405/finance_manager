@@ -30,11 +30,11 @@ export default function Budgets() {
     });
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 lg:space-y-8">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-slate-800">
+          <h1 className="text-2xl font-bold text-slate-800 sm:text-3xl">
             Budgets
           </h1>
 
@@ -45,7 +45,7 @@ export default function Budgets() {
 
         <button
           onClick={() => setOpen(true)}
-          className="rounded-xl bg-blue-600 px-5 py-3 font-medium text-white hover:bg-blue-700"
+          className="w-full rounded-xl bg-blue-600 px-5 py-3 font-medium text-white transition hover:bg-blue-700 sm:w-auto"
         >
           + Add Budget
         </button>
@@ -56,7 +56,7 @@ export default function Budgets() {
           No budgets added yet.
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {budgets.map((budget, index) => (
             <BudgetCard
               key={budget.id}

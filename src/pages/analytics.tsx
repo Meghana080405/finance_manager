@@ -23,10 +23,10 @@ export default function Analytics() {
   const totalTransactions = transactions.length;
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 lg:space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold text-slate-800">
+        <h1 className="text-2xl font-bold text-slate-800 sm:text-3xl">
           Analytics
         </h1>
 
@@ -35,8 +35,8 @@ export default function Analytics() {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 gap-6">
-        {/* Pie Chart */}
+      <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
+        {/* Expense Chart */}
         <Card title="Expense Breakdown">
           <ExpensePieChart />
         </Card>
@@ -45,7 +45,7 @@ export default function Analytics() {
         <Card title="Financial Summary">
           <div className="space-y-5">
 
-            <div className="flex justify-between">
+            <div className="flex items-center justify-between">
               <span>Total Income</span>
 
               <span className="font-semibold text-green-600">
@@ -53,7 +53,7 @@ export default function Analytics() {
               </span>
             </div>
 
-            <div className="flex justify-between">
+            <div className="flex items-center justify-between">
               <span>Total Expenses</span>
 
               <span className="font-semibold text-red-500">
@@ -61,7 +61,7 @@ export default function Analytics() {
               </span>
             </div>
 
-            <div className="flex justify-between">
+            <div className="flex items-center justify-between">
               <span>Current Balance</span>
 
               <span className="font-semibold text-blue-600">
@@ -69,7 +69,7 @@ export default function Analytics() {
               </span>
             </div>
 
-            <div className="flex justify-between">
+            <div className="flex items-center justify-between">
               <span>Total Transactions</span>
 
               <span className="font-semibold">
@@ -77,7 +77,7 @@ export default function Analytics() {
               </span>
             </div>
 
-            <div className="flex justify-between">
+            <div className="flex items-center justify-between">
               <span>Budget Used</span>
 
               <span
@@ -89,6 +89,20 @@ export default function Analytics() {
               >
                 {budgetUsed}%
               </span>
+            </div>
+
+            {/* Progress Bar */}
+            <div className="mt-3 h-3 w-full rounded-full bg-slate-200">
+              <div
+                className={`h-3 rounded-full transition-all ${
+                  budgetUsed >= 80
+                    ? "bg-red-500"
+                    : "bg-blue-600"
+                }`}
+                style={{
+                  width: `${budgetUsed}%`,
+                }}
+              />
             </div>
 
           </div>

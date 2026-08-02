@@ -4,6 +4,7 @@ import {
   Cell,
   ResponsiveContainer,
   Tooltip,
+  Legend,
 } from "recharts";
 
 import { useFinance } from "../../context/financecontext";
@@ -40,23 +41,24 @@ export default function ExpensePieChart() {
 
   if (data.length === 0) {
     return (
-      <div className="flex h-80 items-center justify-center text-slate-500">
+      <div className="flex h-72 items-center justify-center text-slate-500">
         No expense data available.
       </div>
     );
   }
 
   return (
-    <div className="h-80">
+    <div className="h-72 sm:h-80">
       <ResponsiveContainer width="100%" height="100%">
         <PieChart>
           <Pie
             data={data}
             dataKey="value"
             nameKey="name"
-            innerRadius={70}
-            outerRadius={100}
+            innerRadius={55}
+            outerRadius={90}
             paddingAngle={3}
+            label={({ name }) => name}
           >
             {data.map((_, index) => (
               <Cell
@@ -65,10 +67,8 @@ export default function ExpensePieChart() {
               />
             ))}
           </Pie>
-
-          <Tooltip
-  formatter={(value) => [`₹${Number(value).toLocaleString()}`, "Amount"]}
-/>
+          <Tooltip />
+          <Legend />
         </PieChart>
       </ResponsiveContainer>
     </div>

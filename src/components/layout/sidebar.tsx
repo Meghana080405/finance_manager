@@ -5,7 +5,6 @@ import {
   PieChart,
   Settings,
 } from "lucide-react";
-
 import { NavLink } from "react-router-dom";
 
 const menuItems = [
@@ -38,7 +37,7 @@ const menuItems = [
 
 export default function Sidebar() {
   return (
-    <aside className="w-64 border-r border-slate-200 bg-white">
+    <aside className="hidden w-64 shrink-0 border-r border-slate-200 bg-white lg:block">
       <div className="border-b border-slate-200 p-6">
         <h1 className="text-2xl font-bold text-blue-600">
           FinFlow

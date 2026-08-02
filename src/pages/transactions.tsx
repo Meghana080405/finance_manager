@@ -8,7 +8,6 @@ export default function Transactions() {
   const { transactions } = useFinance();
 
   const [open, setOpen] = useState(false);
-
   const [selectedTransaction, setSelectedTransaction] =
     useState<Transaction | null>(null);
 
@@ -23,11 +22,11 @@ export default function Transactions() {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 lg:space-y-8">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-slate-800">
+          <h1 className="text-2xl font-bold text-slate-800 sm:text-3xl">
             Transactions
           </h1>
 
@@ -35,22 +34,20 @@ export default function Transactions() {
             View and manage all your transactions.
           </p>
 
-          <p className="mt-3 text-lg font-semibold text-blue-600">
+          <p className="mt-3 text-base font-semibold text-blue-600 sm:text-lg">
             Total Transactions: {transactions.length}
           </p>
         </div>
 
         <button
           onClick={handleAdd}
-          className="rounded-xl bg-blue-600 px-5 py-3 font-medium text-white transition hover:bg-blue-700"
+          className="w-full rounded-xl bg-blue-600 px-5 py-3 font-medium text-white transition hover:bg-blue-700 sm:w-auto"
         >
           + Add Transaction
         </button>
       </div>
 
-      <TransactionTable
-        onEdit={handleEdit}
-      />
+      <TransactionTable onEdit={handleEdit} />
 
       <AddTransactionModal
         open={open}
