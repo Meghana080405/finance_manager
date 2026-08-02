@@ -6,14 +6,11 @@ import {
   Settings,
   X,
 } from "lucide-react";
-
 import { NavLink } from "react-router-dom";
 
 type SidebarProps = {
   open: boolean;
-  setOpen: React.Dispatch<
-    React.SetStateAction<boolean>
-  >;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const menuItems = [
@@ -50,6 +47,7 @@ export default function Sidebar({
 }: SidebarProps) {
   return (
     <>
+      {/* Mobile Overlay */}
       {open && (
         <div
           onClick={() => setOpen(false)}
@@ -57,13 +55,22 @@ export default function Sidebar({
         />
       )}
 
+      {/* Sidebar */}
       <aside
-        className={`fixed left-0 top-0 z-50 h-screen w-64 border-r border-slate-200 bg-white transition-transform duration-300 lg:static lg:translate-x-0 ${
-          open
-            ? "translate-x-0"
-            : "-translate-x-full"
-        }`}
+        className={`
+          fixed inset-y-0 left-0 z-50
+          w-64 border-r border-slate-200 bg-white
+          transition-transform duration-300
+          ${open ? "translate-x-0" : "-translate-x-full"}
+          lg:relative
+          lg:translate-x-0
+          lg:flex
+          lg:flex-col
+          lg:min-h-screen
+          lg:shrink-0
+        `}
       >
+        {/* Header */}
         <div className="flex items-center justify-between border-b p-6">
           <div>
             <h1 className="text-2xl font-bold text-blue-600">
@@ -83,7 +90,8 @@ export default function Sidebar({
           </button>
         </div>
 
-        <nav className="mt-6 px-4">
+        {/* Navigation */}
+        <nav className="mt-6 flex-1 px-4">
           {menuItems.map((item) => {
             const Icon = item.icon;
 
